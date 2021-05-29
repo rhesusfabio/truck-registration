@@ -37,6 +37,11 @@ namespace TruckRegistration.Domain.Services.Injections
 
             var truck = await _repository.FindToModify(truckId);
 
+            if (truck == null)
+            {
+                throw new BusinessException("Truck not found");
+            }
+
             truck.Update(
                 model,
                 mYear,
@@ -51,10 +56,20 @@ namespace TruckRegistration.Domain.Services.Injections
         {
             var truck = await _repository.FindToModify(id);
 
+            if (truck == null)
+            {
+                throw new BusinessException("Truck not found");
+            }
+
             await _repository.DeleteAsync(truck);
         }
 
-        private static void CommonValidations(int mYear, int mModel, string chassi, string description)
+        public IQueryable<Truck> List()
+        {
+            return _repository.List();
+        }
+
+        private void CommonValidations(int mYear, int mModel, string chassi, string description)
         {
             if (mYear <= 1990)
             {
@@ -76,12 +91,5 @@ namespace TruckRegistration.Domain.Services.Injections
                 throw new BusinessException("Truck's description is mandatory");
             }
         }
-
-        public IQueryable<Truck> List()
-        {
-            return _repository.List();
-        }
-
-        
     }
 }
