@@ -11,5 +11,8 @@
     "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "wwwroot"
-  }
+  } ,
+  "paths": {
+    "@env": ["environments/environment"],
+  },
 }

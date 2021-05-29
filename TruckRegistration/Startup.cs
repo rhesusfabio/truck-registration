@@ -11,6 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using TruckRegistration.Domain.Repositories.Injections;
+using TruckRegistration.Domain.Repositories.Interfaces;
+using TruckRegistration.Domain.Services.Injections;
+using TruckRegistration.Domain.Services.Interfaces;
 using TruckRegistration.Infrastructure;
 
 namespace TruckRegistration
@@ -32,6 +36,9 @@ namespace TruckRegistration
             services.AddDbContext<TruckContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
+
+            services.AddScoped<ITruckRepository, TruckDatabase>();
+            services.AddScoped<ITruckServices, TruckBusiness>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +55,15 @@ namespace TruckRegistration
                     await next();
                 }
             });
+
+            app.UseCors(options =>
+                {
+                    options.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                }
+            );
 
             app.UseMvcWithDefaultRoute();
 

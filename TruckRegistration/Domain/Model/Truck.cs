@@ -30,12 +30,28 @@ namespace TruckRegistration.Domain.Model
         [StringLength(100)]
         public string Description { get; private set; }
 
-        public Truck(Guid id, TruckModel model, int manufactureYear, int manufactureModel)
+        public Truck(TruckModel model, int manufactureYear, int manufactureModel, string chassi, string description)
         {
-            Id = id;
+            Id = Guid.NewGuid();
             Model = model;
             ManufactureYear = manufactureYear;
             ManufactureModel = manufactureModel;
+            Chassi = chassi;
+            Description = description;
+        }
+
+        protected Truck()
+        {
+            //EF 
+        }
+
+        public void Update(TruckModel model, int manufactureYear, int manufactureModel, string chassi, string description)
+        {
+            Model = model;
+            ManufactureYear = manufactureYear;
+            ManufactureModel = manufactureModel;
+            Chassi = chassi;
+            Description = description;
         }
     }
 

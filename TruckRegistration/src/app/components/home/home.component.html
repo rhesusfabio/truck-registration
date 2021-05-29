@@ -1,3 +1,144 @@
-﻿<h1>Hello trucker</h1>
-<h2>This is your truck registration panel</h2>
-<p *ngFor="let m of result">{{m}}</p>
+﻿<div class="col-md-12">
+    <h1>Hello trucker</h1>
+    <h2>This is your truck registration panel</h2>
+</div>
+
+<br />
+<br />
+<div class="col-md-12" *ngIf="isEditing">
+    <form [formGroup]="editForm" (ngSubmit)="onEditSubmit()">
+        <div>
+            <label for="Desc">
+                Description
+            </label>
+            <input id="Desc" type="text" formControlName="Desc">
+        </div>
+
+        <div>
+            <label for="Year">
+                Year
+            </label>
+            <input id="Year" type="text" formControlName="Year">
+        </div>
+
+        <div>
+            <label for="YearModel">
+                Year Model
+            </label>
+            <input id="YearModel" type="text" formControlName="YearModel">
+        </div>
+
+        <div>
+            <label for="Model">
+                Model
+            </label>
+
+            <select id="Model" formControlName="Model">
+                <option [ngValue]="null" disabled selected>Choose model</option>
+                <option *ngFor="let m of models" [ngValue]="m">
+                    {{ m }}
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="Chassi">
+                Chassi
+            </label>
+            <input id="Chassi" type="text" formControlName="Chassi">
+        </div>
+
+        <br />
+        <button class="button" type="submit">Confirm</button>
+        <button class="button" type="button" (click)="cancelEdit()">Cancel</button>
+
+    </form>
+</div>
+<div class="col-md-12" *ngIf="isAdding">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="Desc">
+                Description
+            </label>
+            <input id="Desc" type="text" formControlName="Desc">
+        </div>
+
+        <div>
+            <label for="Year">
+                Year
+            </label>
+            <input id="Year" type="text" formControlName="Year">
+        </div>
+
+        <div>
+            <label for="YearModel">
+                Year Model
+            </label>
+            <input id="YearModel" type="text" formControlName="YearModel">
+        </div>
+
+        <div>
+            <label for="Model">
+                Model
+            </label>
+
+            <select id="Model" formControlName="Model">
+                <option [ngValue]="null" disabled selected>Choose model</option>
+                <option *ngFor="let m of models" [ngValue]="m">
+                    {{ m }}
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <label for="Chassi">
+                Chassi
+            </label>
+            <input id="Chassi" type="text" formControlName="Chassi">
+        </div>
+
+        <br />
+        <button class="button" type="submit">Create</button>
+        <button class="button" type="button" (click)="cancelTruck()">Cancel</button>
+
+    </form>
+</div>
+<br />
+<div class="col-md-12" *ngIf="!isAdding && !isEditing">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">~actions</th>
+                <th scope="col">#</th>
+                <th scope="col">Description</th>
+                <th scope="col">Year</th>
+                <th scope="col">Year-Model</th>
+                <th scope="col">Model</th>
+                <th scope="col">Chassi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of result">
+                <th scope="row">
+                    <button (click)="editTruck(t)">Edit</button>
+                    <button (click)="removeTruck(t)">Remove</button>
+                </th>
+                <th>{{t.id}}</th>
+                <td>{{t.desc}}</td>
+                <td>{{t.year}}</td>
+                <td>{{t.yearModel}}</td>
+                <td>{{t.model}}</td>
+                <td>{{t.chassi}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<br />
+<div class="col-md-12">
+    <button class="btn btn-default" (click)="addTruck()" *ngIf="!isAdding && !isEditing">
+        Add truck
+    </button>
+</div>
