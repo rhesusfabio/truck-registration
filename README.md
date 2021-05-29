@@ -13,3 +13,7 @@ Registration of Trucks
 	- npm install at main folder
 	- check if API's port is corret into 'webpack.config.js' under proxy settings
 	- access directory 'TruckRegistration', type "npm run serve"
+
+- If you have any questions, fell free to contact rhesus.fabio@gmail.com
+
+- Regards
