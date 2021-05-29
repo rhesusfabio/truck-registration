@@ -15,8 +15,9 @@ Registration of Trucks
 
 - Run API project
 	- Make sure if the connection string to the database is correct (MSSQL user and pass)
+    - Start API (backend)
 
-- User Powershell or Git Bash
+- User Powershell or Git Bash (frontend)
 	- npm install at main folder
 	- check if API's port is corret into 'webpack.config.js' under proxy settings
 	- access directory 'TruckRegistration', type "npm run serve"
