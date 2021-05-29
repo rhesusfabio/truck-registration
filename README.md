@@ -1,4 +1,4 @@
-# truck-registration
+# (WEB) truck-registration
 Registration of Trucks
 
 **This project just create a simple CRUD of trucks**
