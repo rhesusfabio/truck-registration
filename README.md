@@ -1,6 +1,13 @@
 # truck-registration
 Registration of Trucks
 
+**This project just create a simple CRUD of trucks**
+
+- There are tests to cover the "Business/Domain" layer.
+
+
+
+**How to run**
 
 - Clone repository
 
