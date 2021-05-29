@@ -7,7 +7,7 @@ Registration of Trucks
 - Load project dir (VsCode) or Solution (VS 2017+)
 
 - Run API project
-	-Make sure if the connection string to the database is correct (MSSQL user and pass)
+	- Make sure if the connection string to the database is correct (MSSQL user and pass)
 
 - User Powershell or Git Bash
 	- npm install at main folder
