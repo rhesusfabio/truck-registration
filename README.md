@@ -23,4 +23,7 @@ Registration of Trucks
 
 - If you have any questions, fell free to contact rhesus.fabio@gmail.com
 
-- Regards
+
+
+**Fábio Rabelo Costa,**
+**Regards**
