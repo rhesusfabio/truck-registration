@@ -3,7 +3,7 @@ Registration of Trucks
 
 **This project just create a simple CRUD of trucks**
 
-- There are tests to cover the "Business/Domain" layer.
+- There are tests to cover just the "Business/Domain" layer. If you need more, let me know.
 
 
 
